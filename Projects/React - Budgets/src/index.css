@@ -160,22 +160,22 @@ header h1 {
 
     transform: translateY(5rem);
 }
-.dos-columnas {
+.two-columns {
     flex-direction: column;
 }
-.dos-columnas :first-child {
+.two-columns :first-child {
     margin-bottom: 4rem;
 }
 @media (min-width: 768px) {
-    .dos-columnas {
+    .two-columns {
         flex-direction: row;
         align-items: center;
         gap: 4rem;
     }
-    .dos-columnas > div {
+    .two-columns > div {
         width: 50%;
     }
-    .dos-columnas :first-child {
+    .two-columns :first-child {
         margin-bottom: 0;
     }
 }
