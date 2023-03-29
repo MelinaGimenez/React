@@ -153,19 +153,15 @@ header h1 {
 }
 .container-budget {
     margin-top: -5rem;
-
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
-    align-items: center;
-
     transform: translateY(5rem);
 }
 .two-columns {
     flex-direction: column;
 }
-.two-columns :first-child {
-    margin-bottom: 4rem;
-}
+
 @media (min-width: 768px) {
     .two-columns {
         flex-direction: row;
@@ -174,9 +170,6 @@ header h1 {
     }
     .two-columns > div {
         width: 50%;
-    }
-    .two-columns :first-child {
-        margin-bottom: 0;
     }
 }
 .form input[type="text"].new-budget, 
@@ -189,27 +182,30 @@ header h1 {
     width: 25rem;
 }
 
-.contenido-budget {
+.container-budget {
     width: 100%;
 }
-.contenido-budget p {
+.container-budget p {
     font-weight: 400;
     color: var(--gris-oscuro);
     font-size: 2.4rem;
     text-align: center;
+    margin-top: 0rem;
+    margin-bottom: 5rem;
 }
 @media (min-width: 768px) {
-    .contenido-budget p {
+    .container-budget p {
         text-align: left;
     }
 }
-.contenido-budget p.negativo,
-.contenido-budget p.negativo span {
+.container-budget p.negativo,
+.container-budget p.negativo span {
     color: red;
 }
-.contenido-budget span {
+.container-budget span {
     font-weight: 900;
     color: var(--azul);
+    margin: 1%
 }
 .reset-app {
     border: none;
