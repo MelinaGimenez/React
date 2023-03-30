@@ -1,10 +1,14 @@
 import React from 'react'
 import closeBtn from '../img/cerrar.svg'
 
-const Modal = ({setModal}) => {
+const Modal = ({setModal, desingModal, setDesingModal}) => {
 
+    //regresa estado original, //efecto y pantalla del + (agregar gasto) retirado
     const ocultarModal = () => {
-        setModal(false)
+        setDesingModal(false)
+        setTimeout(() => {
+            setModal(false)
+          }, 500);
     }
 
 
@@ -17,6 +21,9 @@ const Modal = ({setModal}) => {
                 onClick={ocultarModal}
             />
         </div>
+        <form className={`form ${desingModal ? "desing" : 'close'}`}>
+            <legend>Nuevo Gasto</legend>
+        </form>
     </div>
   )
 }
