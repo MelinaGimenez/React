@@ -9,6 +9,7 @@ function App() {
   const [isValidBudget, setIsValidBudget] = useState(false);
   const [modal, setModal] = useState(false);
   const [desingModal, setDesingModal] = useState(false);
+  const [expense, setExpense] = useState ([])
 
   //efecto y pantalla del + (agregar gasto)
   const handleNewBudget = () => {
@@ -16,6 +17,10 @@ function App() {
     setTimeout(() => {
       setDesingModal(true)
     }, 500);
+  }
+
+  const saveExpense = expense => {
+    console.log(expense)
   }
 
   return (  
@@ -40,6 +45,7 @@ function App() {
         setModal={setModal}   
         desingModal={desingModal}   
         setDesingModal={setDesingModal}
+        saveExpense={saveExpense}
       />}
 
     </div>

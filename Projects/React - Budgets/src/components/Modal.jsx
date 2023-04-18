@@ -1,9 +1,11 @@
 import React from 'react'
 import { useState } from 'react'
+import Message from './Message'
 import closeBtn from '../img/cerrar.svg'
 
-const Modal = ({setModal, desingModal, setDesingModal}) => {
+const Modal = ({setModal, desingModal, setDesingModal, saveExpense}) => {
 
+    const [message, setMessage] = useState('')
     const [name, setName] = useState('')
     const [amountForm, setAmountForm] = useState('')
     const [category, setCategory] = useState('')
@@ -14,6 +16,19 @@ const Modal = ({setModal, desingModal, setDesingModal}) => {
         setTimeout(() => {
             setModal(false)
           }, 500);
+    }
+    
+    //valida form agrega gasto
+    const handleSubmit = e => {
+        e.preventDefault();
+        if([ name, amountForm, category ].includes('')){
+            setMessage('Todos los campos son obligatorios')
+            setTimeout(() => {
+                setMessage('')
+            }, 2500);
+            return;
+        }
+        saveExpense({name, amountForm, category})
     }
 
 
@@ -26,8 +41,12 @@ const Modal = ({setModal, desingModal, setDesingModal}) => {
                 onClick={ocultarModal}
             />
         </div>
-        <form className={`form ${desingModal ? "desing" : 'close'}`}>
+        <form 
+            onSubmit={handleSubmit}
+            className={`form ${desingModal ? "desing" : 'close'}`}
+        >
             <legend>Nuevo Gasto</legend>
+            {message && <Message tipe="error">{message}</Message>}
             <div className='camp'>
                 <label htmlFor="name">Nombre del Gasto</label>
                 <input 
