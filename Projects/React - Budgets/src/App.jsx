@@ -2,6 +2,7 @@ import { useState } from 'react'
 import Header from './components/Header'
 import iconNewSpent from './img/nuevo-gasto.svg'
 import Modal from './components/Modal'
+import { generateId } from './helpers'
 
 function App() {
 
@@ -9,7 +10,7 @@ function App() {
   const [isValidBudget, setIsValidBudget] = useState(false);
   const [modal, setModal] = useState(false);
   const [desingModal, setDesingModal] = useState(false);
-  const [expense, setExpense] = useState ([])
+  const [spents, setSpents] = useState ([])
 
   //efecto y pantalla del + (agregar gasto)
   const handleNewBudget = () => {
@@ -19,8 +20,15 @@ function App() {
     }, 500);
   }
 
-  const saveExpense = expense => {
-    console.log(expense)
+  //guarda datos form gastos
+  const saveSpents = spent => {
+    spent.id = generateId();
+    setSpents([...spents, spent])
+    
+    setDesingModal(false)
+    setTimeout(() => {
+        setModal(false)
+      }, 500);
   }
 
   return (  
@@ -45,7 +53,7 @@ function App() {
         setModal={setModal}   
         desingModal={desingModal}   
         setDesingModal={setDesingModal}
-        saveExpense={saveExpense}
+        saveSpents={saveSpents}
       />}
 
     </div>
