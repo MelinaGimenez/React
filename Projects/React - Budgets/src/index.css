@@ -248,19 +248,19 @@ main {
     background-color: var(--gris-claro);
 }
 
-.listado-gastos {
+.spents-list {
     margin-top: 5rem;
 }
-.listado-gastos h2 {
+.spents-list h2 {
     color: var(--gris-oscuro);
     font-weight: 900;
 }
-.no-gastos {
+.no-spents {
     text-align: center;
     font-size: 2.2rem;
 }
 
-.gasto {
+.spent {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -269,48 +269,48 @@ main {
     width: 100%;
 }
 
-.cantidad-gasto {
+.cantidad-spent {
     font-size: 2.4rem;
     color: var(--negro);
     font-weight: 900;
 }
 
-.contenido-gasto {
+.contenido-spent {
     display: flex;
     align-items: center;
     gap: 2rem;
 }
 
-.contenido-gasto img {
+.contenido-spent img {
     width: 10rem;
 }
 
-.descripcion-gasto p {
+.descripcion-spent p {
     margin: 0 0 0.3rem 0;
 }
-.descripcion-gasto .categoria {
+.descripcion-spent .categoria {
     color: var(--gris);
     font-size: 1.6rem;
     font-weight: 900;
     text-transform: uppercase;
 }
-.descripcion-gasto p {
+.descripcion-spent p {
     margin-bottom: 1rem;
 }
-.descripcion-gasto .nombre-gasto {
+.descripcion-spent .nombre-spent {
     color: var(--gris-oscuro);
     font-size: 2.4rem;
     font-weight: 700;
 }
-.descripcion-gasto .nombre-gasto:hover {
+.descripcion-spent .nombre-spent:hover {
     cursor: pointer;
 }
-.descripcion-gasto .fecha-gasto {
+.descripcion-spent .fecha-spent {
     font-size: 1.8rem;
     font-weight: 900;
     color: var(--gris-oscuro);
 }
-.descripcion-gasto .fecha-gasto span {
+.descripcion-spent .fecha-spent span {
     font-weight: 400;
 }
 
