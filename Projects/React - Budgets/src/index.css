@@ -269,48 +269,48 @@ main {
     width: 100%;
 }
 
-.cantidad-spent {
+.amount-spent {
     font-size: 2.4rem;
     color: var(--negro);
     font-weight: 900;
 }
 
-.contenido-spent {
+.content-spent {
     display: flex;
     align-items: center;
     gap: 2rem;
 }
 
-.contenido-spent img {
+.content-spent img {
     width: 10rem;
 }
 
-.descripcion-spent p {
+.description-spent p {
     margin: 0 0 0.3rem 0;
 }
-.descripcion-spent .categoria {
+.description-spent .category {
     color: var(--gris);
     font-size: 1.6rem;
     font-weight: 900;
     text-transform: uppercase;
 }
-.descripcion-spent p {
+.description-spent p {
     margin-bottom: 1rem;
 }
-.descripcion-spent .nombre-spent {
+.description-spent .name-spent {
     color: var(--gris-oscuro);
     font-size: 2.4rem;
     font-weight: 700;
 }
-.descripcion-spent .nombre-spent:hover {
+.description-spent .name-spent:hover {
     cursor: pointer;
 }
-.descripcion-spent .fecha-spent {
+.description-spent .date-spent {
     font-size: 1.8rem;
     font-weight: 900;
     color: var(--gris-oscuro);
 }
-.descripcion-spent .fecha-spent span {
+.description-spent .date-spent span {
     font-weight: 400;
 }
 

@@ -21,9 +21,10 @@ function App() {
     }, 500);
   }
 
-  //guarda datos form gastos
+  //guarda datos form gastos, retorna fecha tambien
   const saveSpents = spent => {
     spent.id = generateId();
+    spent.date = Date.now();
     setSpents([...spents, spent])
     
     setDesingModal(false)
