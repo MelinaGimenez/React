@@ -1,4 +1,14 @@
 import React from 'react'
+
+import {
+            LeadingActions,
+            SwipeableList,
+            SwipeableListItem,
+            SwipeAction,
+            TrailingActions
+        } from 'react-swipeable-list'
+
+import "react-swipeable-list/dist/styles.css"
 import {generateDate} from '../helpers/index'
 
 import SavingIcon from '../img/icono_ahorro.svg'
@@ -20,7 +30,30 @@ const dictionaryIcons = {
 }
 
 const Spent = ({sp}) => {
+
+  const leadingActions = () => (
+    <LeadingActions>
+      <SwipeAction onClick={() => console.log('editar...')}>
+        Editar
+      </SwipeAction>
+    </LeadingActions>
+  )
+  const trailingActions = () => (
+    <TrailingActions>
+      <SwipeAction onClick={() => console.log('eliminar...')}>
+        Eliminar
+      </SwipeAction>
+  </TrailingActions>
+  )
+
   return (
+    <SwipeableList>
+    <SwipeableListItem
+      //swich delantero
+      leadingActions={leadingActions()}
+      //swich trasero
+      trailingActions={trailingActions()}
+    >
     <div className='spent shadow'>
         <div className='content-spent'>
           <img 
@@ -37,6 +70,8 @@ const Spent = ({sp}) => {
           <p className='amount-spent'>${sp.amountForm}</p>
         </div>
     </div>
+    </SwipeableListItem>
+    </SwipeableList>
   )
 }
 

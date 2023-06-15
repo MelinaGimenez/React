@@ -1,6 +1,19 @@
-import React from 'react'
+import { useState, useEffect } from 'react'
 
-const ControlBudget = ({budget}) => {
+const ControlBudget = ({spents, budget}) => {
+
+  const [ available, setAvailable ] = useState(0)
+  const [ outlay, setOutlay ] = useState(0)
+
+  //genera el efecto ante modif spents: sumar gastos / restar disponible
+  useEffect(() => {
+    const fullSpent = spents.reduce ((full, spent) => spent.amountForm + full, 0);
+    const fullAvailable = budget - fullSpent
+
+    setOutlay(fullSpent)
+    setAvailable(fullAvailable)
+  }, [spents])
+
 
   //funcion para formatear a pesos
   const formatQuantity = (amount) => {
@@ -20,10 +33,10 @@ const ControlBudget = ({budget}) => {
                 <span>Presupuesto: </span> {formatQuantity(budget)}
             </p>
             <p>
-                <span>Disponible: </span> {formatQuantity(0)}
+                <span>Disponible: </span> {formatQuantity(available)}
             </p>
             <p>
-                <span>Gastado: </span> {formatQuantity(0)}
+                <span>Gastado: </span> {formatQuantity(outlay)}
             </p>
         </div>
     </div>
