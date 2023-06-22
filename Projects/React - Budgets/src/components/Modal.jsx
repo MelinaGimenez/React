@@ -1,14 +1,22 @@
 import React from 'react'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Message from './Message'
 import closeBtn from '../img/cerrar.svg'
 
-const Modal = ({setModal, desingModal, setDesingModal, saveSpents}) => {
+const Modal = ({setModal, desingModal, setDesingModal, saveSpents, editSpent}) => {
 
     const [message, setMessage] = useState('')
     const [name, setName] = useState('')
     const [amountForm, setAmountForm] = useState('')
     const [category, setCategory] = useState('')
+
+    useEffect(() => { 
+        if( Object.keys(editSpent).length > 0 ) {
+            setName(editSpent.name)
+            setAmountForm(editSpent.amountForm)
+            setCategory(editSpent.category)   
+        }
+    }, [])
 
     //regresa estado original, //efecto y pantalla del + (agregar gasto) retirado
     const ocultarModal = () => {

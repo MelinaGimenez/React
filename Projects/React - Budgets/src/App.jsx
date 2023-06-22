@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Header from './components/Header'
 import iconNewSpent from './img/nuevo-gasto.svg'
 import Modal from './components/Modal'
@@ -12,10 +12,23 @@ function App() {
   const [modal, setModal] = useState(false);
   const [desingModal, setDesingModal] = useState(false);
   const [spents, setSpents] = useState ([])
+  const [editSpent, setEditSpent] = useState({})
+
+  //al precionar editar completa datos (de edit)
+  useEffect(() => {
+    if( Object.keys(editSpent).length > 0){
+      setModal(true)
+      
+      setTimeout(() => {
+        setDesingModal(true)
+      }, 500);
+    }
+  }, [editSpent])
 
   //efecto y pantalla del + (agregar gasto)
   const handleNewBudget = () => {
     setModal(true)
+    setEditSpent({})
     setTimeout(() => {
       setDesingModal(true)
     }, 500);
@@ -48,6 +61,7 @@ function App() {
           <main>
             <SpentsList
               spents={spents}
+              setEditSpent={setEditSpent}
             />
           </main>
           <div className='new-spent'>
@@ -64,6 +78,7 @@ function App() {
         desingModal={desingModal}   
         setDesingModal={setDesingModal}
         saveSpents={saveSpents}
+        editSpent={editSpent}
       />}
 
     </div>

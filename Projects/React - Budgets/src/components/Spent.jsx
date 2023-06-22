@@ -29,11 +29,11 @@ const dictionaryIcons = {
   suscripciones : SubsIcon
 }
 
-const Spent = ({sp}) => {
+const Spent = ({sp, setEditSpent}) => {
 
   const leadingActions = () => (
     <LeadingActions>
-      <SwipeAction onClick={() => console.log('editar...')}>
+      <SwipeAction onClick={() => setEditSpent(sp)}>
         Editar
       </SwipeAction>
     </LeadingActions>
