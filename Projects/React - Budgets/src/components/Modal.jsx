@@ -9,12 +9,16 @@ const Modal = ({setModal, desingModal, setDesingModal, saveSpents, editSpent}) =
     const [name, setName] = useState('')
     const [amountForm, setAmountForm] = useState('')
     const [category, setCategory] = useState('')
+    const [id, setId] = useState('')
+    const [date, setDate] = useState('')
 
     useEffect(() => { 
         if( Object.keys(editSpent).length > 0 ) {
             setName(editSpent.name)
             setAmountForm(editSpent.amountForm)
-            setCategory(editSpent.category)   
+            setCategory(editSpent.category)
+            setId(editSpent.id)
+            setDate(editSpent.date)     
         }
     }, [])
 
@@ -36,7 +40,7 @@ const Modal = ({setModal, desingModal, setDesingModal, saveSpents, editSpent}) =
             }, 2500);
             return;
         }
-        saveSpents({name, amountForm, category})
+        saveSpents({name, amountForm, category, id, date})
     }
 
 
@@ -53,7 +57,7 @@ const Modal = ({setModal, desingModal, setDesingModal, saveSpents, editSpent}) =
             onSubmit={handleSubmit}
             className={`form ${desingModal ? "desing" : 'close'}`}
         >
-            <legend>Nuevo Gasto</legend>
+            <legend>{editSpent.name ? "Editar Gasto" : "Nuevo Gasto"}</legend>
             {message && <Message tipe="error">{message}</Message>}
             <div className='camp'>
                 <label htmlFor="name">Nombre del Gasto</label>
@@ -94,7 +98,7 @@ const Modal = ({setModal, desingModal, setDesingModal, saveSpents, editSpent}) =
             </div>
             <input 
                 type="submit" 
-                value="Añadir Gasto" 
+                value={editSpent.name ? "Guardar Cambios" : "Añadir Gasto"} 
             />
         </form>
     </div>

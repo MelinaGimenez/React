@@ -34,11 +34,17 @@ function App() {
     }, 500);
   }
 
-  //guarda datos form gastos, retorna fecha tambien
+  //guarda datos form gastos, retorna fecha / con id actualiza, sino retorna igual
   const saveSpents = spent => {
-    spent.id = generateId();
-    spent.date = Date.now();
-    setSpents([...spents, spent])
+    if(spent.id) {
+      const actualSpent = spents.map(spentState => 
+        spentState.id === spent.id ? spent : spentState)
+      setSpents(actualSpent)
+    } else {
+      spent.id = generateId();
+      spent.date = Date.now();
+      setSpents([...spents, spent])
+    }
     
     setDesingModal(false)
     setTimeout(() => {
