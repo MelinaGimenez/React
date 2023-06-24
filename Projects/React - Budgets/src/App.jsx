@@ -52,6 +52,11 @@ function App() {
       }, 500);
   }
 
+  const deleteSpent = id => {
+    const actualSpent = spents.filter( gasto => gasto.id !== id)
+    setSpents(actualSpent)
+  }
+
   return (  
     <div className={modal ? 'fix' : ''}>
       <Header
@@ -68,6 +73,7 @@ function App() {
             <SpentsList
               spents={spents}
               setEditSpent={setEditSpent}
+              deleteSpent={deleteSpent}
             />
           </main>
           <div className='new-spent'>

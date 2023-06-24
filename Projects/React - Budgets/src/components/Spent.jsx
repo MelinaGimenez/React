@@ -29,7 +29,7 @@ const dictionaryIcons = {
   suscripciones : SubsIcon
 }
 
-const Spent = ({sp, setEditSpent}) => {
+const Spent = ({sp, setEditSpent, deleteSpent}) => {
 
   const leadingActions = () => (
     <LeadingActions>
@@ -40,7 +40,10 @@ const Spent = ({sp, setEditSpent}) => {
   )
   const trailingActions = () => (
     <TrailingActions>
-      <SwipeAction onClick={() => console.log('eliminar...')}>
+      <SwipeAction 
+        onClick={() => deleteSpent(sp.id)}
+        destructive={true}
+      >
         Eliminar
       </SwipeAction>
   </TrailingActions>

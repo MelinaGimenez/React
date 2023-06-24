@@ -1,7 +1,7 @@
 import React from 'react'
 import Spent from './Spent'
 
-const SpentsList = ({spents, setEditSpent}) => {
+const SpentsList = ({spents, setEditSpent, deleteSpent}) => {
   return (
     <div className='spents-list container'>
         <h2>{spents.length ? 'Gastos' : 'No hay Gastos aún'}</h2>
@@ -10,6 +10,7 @@ const SpentsList = ({spents, setEditSpent}) => {
                 key={sp.id}
                 sp={sp}
                 setEditSpent={setEditSpent}
+                deleteSpent={deleteSpent}
             />
         ))}
     </div>
