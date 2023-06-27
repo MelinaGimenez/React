@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react'
 import Message from './Message'
 import closeBtn from '../img/cerrar.svg'
 
-const Modal = ({setModal, desingModal, setDesingModal, saveSpents, editSpent}) => {
+const Modal = ({setModal, desingModal, setDesingModal, saveSpents, editSpent, setEditSpent}) => {
 
     const [message, setMessage] = useState('')
     const [name, setName] = useState('')
@@ -25,6 +25,7 @@ const Modal = ({setModal, desingModal, setDesingModal, saveSpents, editSpent}) =
     //regresa estado original, //efecto y pantalla del + (agregar gasto) retirado
     const ocultarModal = () => {
         setDesingModal(false)
+        setEditSpent({})
         setTimeout(() => {
             setModal(false)
           }, 500);

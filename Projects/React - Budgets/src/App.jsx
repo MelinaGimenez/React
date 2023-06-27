@@ -7,7 +7,8 @@ import { generateId } from './helpers'
 
 function App() {
 
-  const [budget, setBudget] = useState("");
+  const [budget, setBudget] = useState('');
+
   const [isValidBudget, setIsValidBudget] = useState(false);
   const [modal, setModal] = useState(false);
   const [desingModal, setDesingModal] = useState(false);
@@ -25,6 +26,11 @@ function App() {
     }
   }, [editSpent])
 
+  //guardar en ls
+  //useEffect(() => {
+  //  localStorage.setItem('budget', budget ?? 0)
+  //}, [budget])
+
   //efecto y pantalla del + (agregar gasto)
   const handleNewBudget = () => {
     setModal(true)
@@ -40,6 +46,7 @@ function App() {
       const actualSpent = spents.map(spentState => 
         spentState.id === spent.id ? spent : spentState)
       setSpents(actualSpent)
+      setEditSpent({})
     } else {
       spent.id = generateId();
       spent.date = Date.now();
@@ -91,6 +98,7 @@ function App() {
         setDesingModal={setDesingModal}
         saveSpents={saveSpents}
         editSpent={editSpent}
+        setEditSpent={setEditSpent}
       />}
 
     </div>
