@@ -4,16 +4,21 @@ import iconNewSpent from './img/nuevo-gasto.svg'
 import Modal from './components/Modal'
 import SpentsList from './components/SpentsList'
 import { generateId } from './helpers'
+import Filters from './components/filters'
 
 function App() {
 
-  const [budget, setBudget] = useState('');
-
+  const [budget, setBudget] = useState(
+    Number(localStorage.getItem('budget') ?? 0)
+  );
+  const [spents, setSpents] = useState (
+    localStorage.getItem('spents') ? JSON.parse(localStorage.getItem('spents')) : []
+  )
   const [isValidBudget, setIsValidBudget] = useState(false);
   const [modal, setModal] = useState(false);
   const [desingModal, setDesingModal] = useState(false);
-  const [spents, setSpents] = useState ([])
   const [editSpent, setEditSpent] = useState({})
+  const [filter, setFilter] = useState('')
 
   //al precionar editar completa datos (de edit)
   useEffect(() => {
@@ -26,10 +31,21 @@ function App() {
     }
   }, [editSpent])
 
-  //guardar en ls
-  //useEffect(() => {
-  //  localStorage.setItem('budget', budget ?? 0)
-  //}, [budget])
+  //guardar presupuesto en ls
+  useEffect(() => {
+    localStorage.setItem('budget', budget ?? 0)
+  }, [budget]);
+  useEffect(() => {
+    localStorage.setItem('spents', JSON.stringify(spents) ?? [])
+  }, [spents]);
+
+  //no retornar pantalla inicio si hay inf en LS
+  useEffect(()=> {
+    const budgetLS = Number(localStorage.getItem('budget')) ?? 0;
+    if(budgetLS > 0) {
+      setIsValidBudget(true)
+    }
+  }, [])
 
   //efecto y pantalla del + (agregar gasto)
   const handleNewBudget = () => {
@@ -77,6 +93,12 @@ function App() {
       {isValidBudget && (
         <>
           <main>
+
+            <Filters
+              filter={filter}
+              setFilter={setFilter}
+            />
+
             <SpentsList
               spents={spents}
               setEditSpent={setEditSpent}

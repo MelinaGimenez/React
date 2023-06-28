@@ -112,7 +112,7 @@ header h1 {
     transition: background-color 300ms ease;
 }
 @media (min-width: 768px) {
-    .formulformario input[type="submit"] {
+    .form input[type="submit"] {
         display: block;
         padding: 1rem 5rem;
     }
@@ -198,8 +198,8 @@ header h1 {
         text-align: left;
     }
 }
-.container-budget p.negativo,
-.container-budget p.negativo span {
+.container-budget p.negative,
+.container-budget p.negative span {
     color: red;
 }
 .container-budget span {
@@ -229,17 +229,17 @@ main {
     padding-top: 10rem;
 }
 
-.filtros .camp {
+.filters .camp {
     display: flex;
     align-items: center;
     gap: 2rem;
 }
-.filtros label {
+.filters label {
     font-size: 3rem;
     font-weight: 900;
     color: var(--gris-oscuro);
 }
-.filtros select {
+.filters select {
     flex: 1;
     padding: 1rem;
     border: none;
@@ -279,6 +279,8 @@ main {
     display: flex;
     align-items: center;
     gap: 2rem;
+    width: 90%;
+    justify-content: space-around;
 }
 
 .content-spent img {
@@ -293,6 +295,7 @@ main {
     font-size: 1.6rem;
     font-weight: 900;
     text-transform: uppercase;
+
 }
 .description-spent p {
     margin-bottom: 1rem;
