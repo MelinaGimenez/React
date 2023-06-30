@@ -18,7 +18,8 @@ function App() {
   const [modal, setModal] = useState(false);
   const [desingModal, setDesingModal] = useState(false);
   const [editSpent, setEditSpent] = useState({})
-  const [filter, setFilter] = useState('')
+  const [filtered, setFiltered] = useState('')
+  const [filteredSpent, setFilteredSpent] = useState([])
 
   //al precionar editar completa datos (de edit)
   useEffect(() => {
@@ -38,6 +39,14 @@ function App() {
   useEffect(() => {
     localStorage.setItem('spents', JSON.stringify(spents) ?? [])
   }, [spents]);
+
+  useEffect(() => {
+    if(filtered) {
+      const filteredSpents = spents.filter(spe => spe.category === filtered)
+      setFilteredSpent(filteredSpents)
+
+    }
+  }, [filtered])
 
   //no retornar pantalla inicio si hay inf en LS
   useEffect(()=> {
@@ -84,6 +93,7 @@ function App() {
     <div className={modal ? 'fix' : ''}>
       <Header
         spents = {spents}
+        setSpents={setSpents}
         budget = {budget}
         setBudget = {setBudget}
         isValidBudget = {isValidBudget}
@@ -95,14 +105,16 @@ function App() {
           <main>
 
             <Filters
-              filter={filter}
-              setFilter={setFilter}
+              filtered={filtered}
+              setFiltered={setFiltered}
             />
 
             <SpentsList
               spents={spents}
               setEditSpent={setEditSpent}
               deleteSpent={deleteSpent}
+              filtered={filtered}
+              filteredSpent={filteredSpent}
             />
           </main>
           <div className='new-spent'>

@@ -1,16 +1,16 @@
 import { useState, useEffect } from 'react'
 
-const Filters = (filter, setFilter) => {
+const Filters = ({filtered, setFiltered}) => {
   return (
     <div className='filters shadow container'>
         <form>
             <div className='camp'>
                 <label>Filtrar Gastos</label>
                 <select
-                    value={filter}
-                    onChange={e => setFilter(e.target.value)}
+                    value= {filtered}
+                    onChange={e => setFiltered(e.target.value)}
                 >
-                    <option value="">-- Seleccione --</option>
+                    <option value="">-- Todos los Gastos --</option>
                     <option value="ahorro">Ahorro</option>
                     <option value="comida">Comida</option>
                     <option value="casa">Casa</option>
@@ -20,7 +20,7 @@ const Filters = (filter, setFilter) => {
                     <option value="suscripciones">Suscripciones</option>
                 </select>
             </div>
-        </form>
+        </form> 
     </div>
   )
 }
